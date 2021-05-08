@@ -1,5 +1,5 @@
 %-------------------------
-% Resume (one-pager) in Latex
+% CV (longer) in Latex
 % Author: Kian Faizi
 % Forked from: https://github.com/jakegut/resume
 % License: MIT
@@ -124,20 +124,19 @@
 \section{Education}
   \resumeSubHeadingListStart
     \resumeSubheading
-      {University of California, San Diego}{Aug. 2017 -- June 2021}
+      {University of California, San Diego}{Aug. 2017 -- May 2021}
       {B.S. Molecular Biology, Minor in Mathematics (GPA: 3.76)}{La Jolla, CA}
       \resumeItemListStart
-        \resumeItem{Teaching experience: Instructional Apprentice for Genetic Inquiry, Fall 2020}
         \resumeItem{Selected coursework: Bioinformatics, Biophysics, Computational Linear Algebra, Gene Regulation, Genome Editing, Modeling, Statistics, Stochastic Processes}
       \resumeItemListEnd
     \resumeSubheading
-      {International School of Kuala Lumpur}{Aug. 2013 -- June 2017}
+      {International School of Kuala Lumpur}{Aug. 2013 -- May 2017}
       {I.B. Diploma, Earth Club President, Varsity Basketball Team Captain}{Kuala Lumpur, Malaysia}
   \resumeSubHeadingListEnd
 
 
-%-----------EXPERIENCE-----------
-\section{Experience}
+%-----------RESEARCH EXPERIENCE-----------
+\section{Research Experience}
   \resumeSubHeadingListStart
     \resumeSubheading
       {Lab Technician}{Nov. 2019 -- present}
@@ -148,8 +147,13 @@
         \resumeItem{Built a pipeline for co-expression network analysis of scRNA-seq data to identify root growth genes, in order to aid crop engineering efforts}
         \resumeItem{Measured ground-truth angles and radii from 3D point cloud data to aid development of phenotyping software}
       \resumeItemListEnd
-
-    
+    \resumeSubheading
+      {Volunteer Research Assistant}{Nov. 2018 -- Nov. 2019}
+      {Lab of Patrick Hsu, Salk Institute for Biological Studies}{La Jolla, CA}
+      \resumeItemListStart
+        \resumeItem{Created an automated pipeline to search over 20Tb of metagenome sequences for novel orthologs of Cas13d, an RNA-targeting CRISPR effector}
+        \resumeItem{Assisted in conducting a pooled 150,000-guide CRISPR-Cas13d screen in K562s to study gRNA efficiency}
+    \resumeItemListEnd
 % -----------Multiple Positions Heading-----------
 %    \resumeSubSubheading
 %     {Software Engineer I}{Oct 2014 - Sep 2016}
@@ -159,16 +163,37 @@
 %     \resumeItemListEnd
 %    \resumeSubHeadingListEnd
 %-------------------------------------------
-
-    \resumeSubheading
-      {Volunteer Research Assistant}{Nov. 2018 -- Nov. 2019}
-      {Lab of Patrick Hsu, Salk Institute for Biological Studies}{La Jolla, CA}
-      \resumeItemListStart
-        \resumeItem{Created an automated pipeline to search over 20Tb of metagenome sequences for novel orthologs of Cas13d, an RNA-targeting CRISPR effector}
-        \resumeItem{Assisted in conducting a pooled 150,000-guide CRISPR-Cas13d screen in K562s to study gRNA efficiency}
-    \resumeItemListEnd
-
   \resumeSubHeadingListEnd
+
+
+
+%-----------TEACHING EXPERIENCE-----------
+\section{Teaching Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Instructional Apprentice: Genetic Inquiry}{Aug. 2020 -- Dec. 2020}
+      {Supervised by Dr. Stanley Lo, UCSD}{}
+  \resumeSubHeadingListEnd
+
+%----------PUBLICATIONS-------
+\section{Publications}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Curve skeleton extraction from 3D point clouds for high-throughput plant phenotyping.}}{}
+          \resumeItemListStart
+            \resumeItem{Illia Ziamtsov, \textbf{Kian Faizi}, and Saket Navlakha. \emph{In prep.}}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Network design principles in the \emph{Arabidopsis} root system.}}{}
+          \resumeItemListStart
+            \resumeItem{\textbf{Kian Faizi}, Matthieu Platre, Arjun Chandrasekhar, Saket Navlakha, and Wolfgang Busch. \emph{In prep.}}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{A pooled CRISPR-Cas13d screen reveals guide RNA design principles.}}{}
+          \resumeItemListStart
+            \resumeItem{Silvana Konermann, \textbf{Kian Faizi}, Peter Lotfy, and Patrick Hsu. \emph{In prep.}}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
 
 %----------POSTERS & PRESENTATIONS-------
 \section{Posters and Presentations}
@@ -190,9 +215,7 @@
           \resumeItemListEnd
     \resumeSubHeadingListEnd
 
-
 %-----------HONORS AND AWARDS-----------
-% Eureka, HDSI, provost, slam
 \section{Honors and Awards}
     \resumeSubHeadingListStart
       \resumeProjectHeading
@@ -211,7 +234,18 @@
           {\textbf{First Place Solo Performance} $|$ \emph{Sunway National Poetry Slam, Malaysia}}{Apr. 2016}
     \resumeSubHeadingListEnd
 
-
+%-----------PROFESSIONAL ACTIVITIES-----------
+\section{Professional Activities}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{Member, Undergraduate Bioinformatics Club} $|$ \emph{UCSD}}{Nov. 2017 -- present}
+      {}{}
+      \resumeItemListStart
+        \resumeItem{Collaborated with Illumina to develop digital resources for high school students interested in bioinformatics}
+        \resumeItem{Helped organize the 2018 Faculty \& Industry Bioinformatics Symposium}
+        \resumeItem{Volunteered in the club booth at SDSEF to educate the community about DNA sequencing technology}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
 
 %-----------SKILLS-----------
 \section{Skills}
@@ -220,8 +254,7 @@
      \textbf{Laboratory}{: Cell/tissue culture, molecular cloning, CRISPR screens, lentiviral transduction, optical microscopy} \\
      \textbf{Languages}{: Python, bash, JavaScript, HTML/CSS, R, Perl} \\
      \textbf{Organizational}{: Git, \LaTeX, conda, vim, Unix systems} \\
-     \textbf{Libraries}{: BLAST+, pandas, NumPy, ScanPy, matplotlib, NetworkX}
-    }}
+     \textbf{Libraries}{: BLAST+, pandas, NumPy, ScanPy, matplotlib, NetworkX} \\}}
  \end{itemize}
 
 
