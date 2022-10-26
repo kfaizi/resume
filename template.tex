@@ -1,0 +1,227 @@
+%-------------------------
+% My go-to LaTeX CV template
+% Author: Kian Faizi
+% Forked from: https://github.com/jakegut/resume
+% License: MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks,colorlinks,linkcolor=blue,urlcolor=blue,citecolor=blue,anchorcolor=blue]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+\usepackage{soul}
+\usepackage{doi}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small #3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeRotationHeading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      {\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape Your Name} \\ \vspace{1pt}
+    \href{mailto:youremail@domain.xyz}{\ul{youremail@domain.xyz}} $|$ 
+    \href{https://www.yourwebsite.xyz/}{\ul{yourwebsite.xyz}} $|$
+    \href{https://www.github.com/yourname/}{\ul{github.com/yourname}}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Michigan Institute of Technology}{Sep.\ 2021 -- present}
+      {Ph.D. in Basket Weaving (GPA: 5.00)}{Detroit, MI}
+      {}{}
+    \resumeSubheading
+      {University of the Caribbean, Santo Domingo}{Aug.\ 2017 -- June\ 2021}
+      {B.S. in Subatomic Literary Theory (GPA: 5.00)}{Santo Domingo, DR}
+      \resumeItemListStart
+        \resumeItem{Selected coursework: Quantum Poetry, Solid-state Linguistics, Category Theory for Writers}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+
+%-----------RESEARCH EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading{Graduate Student}{Sep.\ 2021 -- present}
+      {Lab of Dr.\,X, MIT}{Detroit, MI}
+      \resumeItemListStart
+        \resumeItem{Developing robust methods for combining straw fibers into arbitrary shapes}
+        \resumeItem{In pereptual student-employee superposition}
+      \resumeItemListEnd
+
+
+    \resumeSubheading
+      {Lab Technician}{Nov.\ 2018 -- Sep.\ 2021}
+      {Lab of Dr.\,Y, UCSD}{Santo Domingo, DR}
+      \resumeItemListStart
+        \resumeItem{Built an AI recommender system that suggests romance novels to users based\\ on their arXiv browsing history \textbf{[1]}}
+
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%----------PUBLICATIONS-------
+\section{Publications}
+    \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+          {\textbf{[1] A multimodal widget ensemble improves the mental health of graduate students.}}{}
+          \resumeItemListStart
+            \resumeItem{\textbf{Your Name} and Dr.\,Y. \emph{First Annual TikTok Conference.} (2022) \doi{10.2307/466856}}
+          \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+%-----------TEACHING EXPERIENCE-----------
+\section{Teaching}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{Principles of Basket Weaving} (TA) $|$ \emph{MIT}}{Apr.\ 2022 -- June\ 2022}
+  \resumeSubHeadingListEnd
+
+%----------POSTERS & PRESENTATIONS-------
+\section{Posters and Presentations}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{A Freudian critique of academic publishing.} $|$ \emph{Keynote talk}}{Oct.\ 2022}
+          \resumeItemListStart
+            \resumeItem{First Annual TikTok Conference (Paris, Texas)}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+%-----------HONORS AND AWARDS-----------
+\section{Honors and Awards}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Textile Nanoengineering Fellowship} (\$69,000) $|$ \emph{DARPA}}{Mar.\ 2022}
+          \resumeItemListStart
+            \resumeItem{Advanced domestic \emph{haute couture} in support of national defense}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+%-----------ACTIVITIES-----------
+\section{Service and Leadership}
+  \resumeSubHeadingListStart
+
+    \resumeProjectHeading
+      {\textbf{Ajit Pai Fan Club} president $|$ \emph{UCSD}}{Nov.\ 2017 -- June\ 2021}
+      {}{}
+      \resumeItemListStart
+        \resumeItem{Organized social events and game nights for other anti-net-neutrality activists}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+
+%-----------SKILLS-----------
+\section{Skills}
+  \begin{itemize}[leftmargin=0.15in, label={}]
+     \small{\item{
+      \textbf{Laboratory}{: Genetic engineering, superconductor fabrication, welding} \\
+      \textbf{Computational}{: Arch Linux (btw)} \\
+      \textbf{Organizational}{: \LaTeX} \\}
+  \end{itemize}
+
+
+%-------------------------------------------
+\end{document}
