@@ -21,32 +21,24 @@
 \input{glyphtounicode}
 \usepackage{soul}
 \usepackage{doi}
-
+\usepackage[T1]{fontenc}
+\usepackage{lastpage}
+\usepackage[letterpaper, margin=.5in, bottom=.7in]{geometry}
+\setlength{\footskip}{.5in}
 
 %----------FONT OPTIONS----------
-% sans-serif
-% \usepackage[sfdefault]{FiraSans}
-% \usepackage[sfdefault]{roboto}
-% \usepackage[sfdefault]{noto-sans}
-% \usepackage[default]{sourcesanspro}
-
-% serif
-% \usepackage{CormorantGaramond}
-% \usepackage{charter}
-
+% \usepackage{palatino}
+\usepackage{lmodern}
+% \renewcommand{\rmdefault}{lmss}
 
 \pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0pt} % Removes the header rule
 \renewcommand{\footrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize{as of Feb.\ 2024}}
+\fancyfoot[R]{\footnotesize{\thepage/\pageref{LastPage}}}
 
-% Adjust margins
-\addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1.0in}
+
 
 \urlstyle{same}
 
@@ -56,7 +48,7 @@
 
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
+  \vspace{-4pt}\fontfamily{lmss}\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
 % Ensure that generate pdf is machine readable/ATS parsable
@@ -64,26 +56,89 @@
 
 %-------------------------
 % Custom commands
-\newcommand{\resumeItem}[1]{
-  \item\small{
-    {#1 \vspace{-2pt}}
-  }
+
+% define headings for workplaces, e.g. caltech
+\newcommand{\place}[2]{
+  \vspace{-2pt}
+  \item
+    \begin{tabular*}
+      {0.97\textwidth}[t] % tabular env, top aligned
+      {l@{\extracolsep{\fill}}r} % left & right cols + expanded padding
+      \textbf{#1} % employer/university 
+      & \textit{\footnotesize{#2}} \\  % location
+    \end{tabular*}
+    \vspace{-7pt}
 }
+
+% define subsections for roles, e.g. grad student
+\newcommand{\role}[2]{
+  \vspace{-2pt}
+  \item
+    \begin{tabular*}
+      {0.97\textwidth}[t] % tabular env, top aligned
+      {l@{\extracolsep{\fill}}r} % left & right cols + expanded padding
+      {\small #1}  % role
+      & {\footnotesize{#2}} \\  % dates held
+    \end{tabular*}
+    \vspace{-7pt}
+}
+
+% variation for things like courses taught, projects led
+\newcommand{\entry}[3]{
+  \vspace{-2pt}
+  \item
+    \begin{tabular*}
+      {0.97\textwidth} % tabular env, top aligned
+      {l@{\extracolsep{\fill}}r} % left & right cols + expanded padding
+      {\small \textbf{#1} #2}  % class/org, role, institution
+      & {\footnotesize{#3}} \\  % dates held
+    \end{tabular*}
+    \vspace{-7pt}
+}
+
+% publications
+\newcommand{\pub}[5]{
+  \item
+  \begin{tabular*}{0.97\textwidth}[t]{@{}p{0.97\textwidth}@{}}
+    \small#1 % authors
+    \small#2 % title
+    \small\textbf{\emph{#3}} % journal
+    \small(#4). % year
+    \small#5 % doi/link
+  \end{tabular*}
+  \vspace{-2pt}
+}
+
+\newcommand{\resumeItem}[1]{
+  \item
+  \begin{minipage}[t]{0.7\textwidth}
+    \small #1 
+  \end{minipage}
+  % \vspace{-2pt}
+}
+
+% underline hyperlinks by default
+\let\oldhref\href
+\renewcommand{\href}[2]{\oldhref{#1}{\ul{#2}}}
+
+
+
+\newcommand{\resumeEntry}[2]{
+  \item
+  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \small#1 & \small#2 \\
+  \end{tabular*}
+  \vspace{-7pt}
+}
+
 
 \newcommand{\resumeSubheading}[4]{
   \vspace{-2pt}\item
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small #3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeRotationHeading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      {\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
+      \textbf{#1} & \small #2 \\
+      {\small #3} & \textit{\footnotesize #4} \\
+    \end{tabular*}
+    \vspace{-7pt}
 }
 
 
@@ -91,24 +146,43 @@
     \item
     \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
       \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
+    \end{tabular*}
+    \vspace{-7pt}
 }
 
-\newcommand{\resumeProjectHeading}[2]{
+
+\newcommand{\resumeProjectHeading}[1]{
     \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & #2 \\
-    \end{tabular*}\vspace{-7pt}
+    \begin{tabular*}{0.97\textwidth}{@{}p{0.7\textwidth}@{}}
+      \small#1 \\
+    \end{tabular*}
+    \vspace{-7pt}
 }
 
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\newcommand{\resumeSubItem}[1]{
+  \resumeItem{#1}
+  \vspace{-4pt}
+}
 
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeSubHeadingListStart}{
+  \begin{itemize}[leftmargin=0.15in, label={}]
+}
+
+\newcommand{\resumeSubHeadingListEnd}{
+  \end{itemize}
+}
+
+\newcommand{\resumeItemListStart}{
+  \begin{itemize}[itemsep=.5pt]
+}
+
+\newcommand{\resumeItemListEnd}{
+  \end{itemize}
+  \vspace{-2pt}
+}
 
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -117,27 +191,40 @@
 \begin{document}
 
 \begin{center}
-    \textbf{\Huge \scshape Kian Faizi} \\ \vspace{1pt}
-    \href{mailto:kian@caltech.edu}{\ul{kian@caltech.edu}} $|$ 
-    \href{https://www.kianfaizi.com/}{\ul{kianfaizi.com}} $|$
-    \href{https://www.github.com/kfaizi/}{\ul{github.com/kfaizi}}
+    \textbf{\Huge Kian Faizi} \\ \vspace{1pt}
+    \href{mailto:kian@caltech.edu}{kian@caltech.edu} $|$ 
+    \href{https://www.kianfaizi.com/}{kianfaizi.com} $|$
+    \href{https://www.github.com/kfaizi/}{github.com/kfaizi}
 \end{center}
 
 
 %-----------EDUCATION-----------
 \section{Education}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {California Institute of Technology}{Sep.\ 2021 -- present}
-      {Ph.D. in Systems Biology (GPA: 4.0)}{Pasadena, CA}
-      {}{}
-    \resumeSubheading
-      {University of California, San Diego}{Aug.\ 2017 -- June\ 2021}
-      {B.S. in Molecular Biology, Minor in Mathematics (GPA: 3.75)}{La Jolla, CA}
-      \resumeItemListStart
-        \resumeItem{Selected coursework: Bioinformatics, Biophysics, Computational Linear Algebra,\\ Dynamical Systems, Genome Editing, Statistics, Stochastic Processes}
-      \resumeItemListEnd
-  \resumeSubHeadingListEnd
+
+\resumeSubHeadingListStart
+
+\place
+{California Institute of Technology}
+{Pasadena, CA}
+
+\role
+{PhD in Systems Biology}
+{Sep.\ 2021 -- present}
+
+\vspace{4pt}
+
+\place
+{University of California, San Diego}
+{La Jolla, CA}
+
+\role
+{BS in Molecular Biology, Minor in Mathematics (GPA: 3.75)}
+{Aug.\ 2017 -- June\ 2021}
+
+      % \resumeItemListStart
+      %   \resumeItem{Selected coursework: Bioinformatics, Biophysics, Computational Linear Algebra, Dynamical Systems, Genome Editing, Statistics, Stochastic Processes}
+      % \resumeItemListEnd
+\resumeSubHeadingListEnd
 
     % \resumeSubheading
     %   {International School of Kuala Lumpur}{Aug.\ 2013 -- June 2017}
@@ -145,221 +232,336 @@
 
 
 %-----------RESEARCH EXPERIENCE-----------
-\section{Experience}
-  \resumeSubHeadingListStart
-    \resumeSubheading{Graduate Student}{Sep.\ 2021 -- present}
-      {Lab of Dr.\,Rob Phillips, Caltech}{Pasadena, CA}
-      \resumeItemListStart
-        \resumeItem{Studying transcriptional regulation and nutrient ecology in diverse bacteria}
-        \resumeItem{Expanding \href{https://www.anthroponumbers.org/}{\ul{anthroponumbers.org}}, a database quantifying human impacts on the planet}
-      \resumeItemListEnd
-    
+\section{Research}
 
-    \resumeSubheading{Visiting Postgraduate Fellow}{June\ 2022 -- Aug.\ 2022}
-      {Lab of Dr.\,Pamela Silver, Harvard Medical School}{Boston, MA}
-      \resumeItemListStart
-        \resumeItem{Developed tools for chloroplast engineering in the green alga \emph{C.\,reinhardtii} \textbf{[4]}}
-        \resumeItem{On sabbatical from Caltech as an inaugural \emph{New Science} fellow}
-      \resumeItemListEnd
+\resumeSubHeadingListStart
 
-    \resumeSubheading
-      {Lab Technician}{Nov.\ 2019 -- Sep.\ 2021}
-      {Lab of Dr.\,Wolfgang Busch, Salk Institute for Biological Studies}{La Jolla, CA}
-      \resumeItemListStart
-        \resumeItem{Investigated Pareto-optimal trade-offs in the \emph{Arabidopsis} root system using\\ high-throughput phenotyping and graph-theoretic modeling \textbf{[3]}}
-        \resumeItem{Built software for time-series segmentation and analysis of root images}
-        \resumeItem{Helped develop algorithms for plant phenotyping from noisy 3D point clouds \textbf{[2]}}
-        \resumeItem{Quantified root responses to nutrient deficiency using time-lapse optical microscopy \textbf{[1]}}
-        \resumeItem{Created a pipeline for co-expression network analysis of scRNA-seq data\\ to identify genetic targets for crop engineering}
-      \resumeItemListEnd
+\place
+{California Institute of Technology}
+{Pasadena, CA}
+
+\role
+{PhD Student, Rob Phillips Lab}
+{Sep.\ 2021 -- present}
+  \resumeItemListStart
+    \resumeItem{Studying transcriptional regulation and nutrient ecology in diverse bacteria}
+    \resumeItem{Expanding \href{https://www.anthroponumbers.org/}{anthroponumbers.org}, a database quantifying human impacts on the planet}
+  \resumeItemListEnd
+ 
+\place
+{Harvard Medical School}
+{Boston, MA}
+
+\role
+{Visiting Postgraduate Fellow, Pam Silver Lab}
+{June\ 2022 -- Aug.\ 2022}
+  \resumeItemListStart
+    \resumeItem{Developed tools for chloroplast engineering in the green alga \emph{C.\,reinhardtii} \textbf{[4]}}
+    \resumeItem{On sabbatical from Caltech as an inaugural \emph{New Science} fellow}
+  \resumeItemListEnd
+
+\place
+{Salk Institute for Biological Studies}
+{La Jolla, CA}
+
+\role
+{Lab Technician, Wolfgang Busch Lab}
+{Nov.\ 2019 -- Sep.\ 2021}
+  \resumeItemListStart
+    \resumeItem{Investigated Pareto-optimal trade-offs in the \emph{Arabidopsis} root system using high-throughput phenotyping and graph-theoretic modeling \textbf{[3]}}
+    \resumeItem{Built software for time-series segmentation and analysis of root images}
+    \resumeItem{Helped develop algorithms for plant phenotyping from noisy 3D point clouds \textbf{[2]}}
+    \resumeItem{Quantified root responses to nutrient deficiency using time-lapse optical microscopy \textbf{[1]}}
+    \resumeItem{Created a pipeline for co-expression network analysis of scRNA-seq data to identify genetic targets for crop engineering}
+  \resumeItemListEnd
+
+\role
+{Volunteer Research Assistant, Patrick Hsu Lab}
+{Nov.\ 2018 -- Nov.\ 2019}
+  \resumeItemListStart
+    \resumeItem{Developed an automated pipeline to mine over 20 TB of metagenomic sequence data for new orthologs of CRISPR-Cas13d}
+    \resumeItem{Assisted with a pooled 127,000-guide Cas13d screen to inform gRNA design algorithms \textbf{[p1]}}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
 
 
-    \resumeSubheading
-      {Volunteer Research Assistant}{Nov.\ 2018 -- Nov.\ 2019}
-      {Lab of Dr.\,Patrick Hsu, Salk Institute for Biological Studies}{La Jolla, CA}
-      \resumeItemListStart
-        \resumeItem{Developed an automated pipeline to mine over 20 TB of metagenomic sequence data\\ for new orthologs of CRISPR-Cas13d}
-        \resumeItem{Assisted with a pooled 127,000-guide Cas13d screen to inform gRNA design algorithms \textbf{[p1]}}
-    \resumeItemListEnd
-
-  \resumeSubHeadingListEnd
-
-%----------PUBLICATIONS-------
-\section{Publications}
-    \resumeSubHeadingListStart
-
-      \resumeProjectHeading
-          {\textbf{[5] In Defense of Basic Science.}}{}
-          \resumeItemListStart
-            \resumeItem{\textbf{Kian Faizi}. \emph{Caltech Letters} (2022) \href{https://caltechletters.org/viewpoints/in-defense-of-basic-science}{\ul{caltechletters.org}}}
-          \resumeItemListEnd
-          
-      \resumeProjectHeading
-          {\textbf{[4] Reversing 1.5 Billion Years of Evolution.}}{}
-          \resumeItemListStart
-            \resumeItem{\textbf{Kian Faizi}. \emph{newscience.org} (2022) \doi{10.56416/720qud}}
-          \resumeItemListEnd
-
-      \resumeProjectHeading
-          {\textbf{[3] Network design principles in the \emph{Arabidopsis} root system.}}{}
-          \resumeItemListStart
-            \resumeItem{\textbf{Kian Faizi}, Matthieu Platre, Arjun Chandrasekhar, Saket Navlakha, and Wolfgang Busch. \emph{In prep.}}
-          \resumeItemListEnd
-
-      \resumeProjectHeading
-          {\textbf{[2] Branch-Pipe: Improving graph skeletonization around branch points in 3D point clouds.}}{}
-          \resumeItemListStart
-            \resumeItem{Illia Ziamtsov, \textbf{Kian Faizi}, and Saket Navlakha. \emph{Remote Sensing.} (2021) \doi{10.3390/rs13193802}}
-          \resumeItemListEnd
-
-      \resumeProjectHeading
-          {\textbf{[1] Dynamics of \emph{Arabidopsis} root growth under acute abiotic stress.}}{}
-          \resumeItemListStart
-            \resumeItem{\textbf{Kian Faizi\textsuperscript{\textdagger}}, Matias Gleason\textsuperscript{\textdagger}, Matthieu Platre\textsuperscript{\textdagger}, Lukas Brent, and Wolfgang Busch. \emph{In prep.}}
-          \resumeItemListEnd
-
-    \resumeSubHeadingListEnd
-
-%----------PREPRINTS-------
-\section{Preprints}
-    \resumeSubHeadingListStart
-      \resumeProjectHeading
-          {\textbf{[p1] Deep learning and CRISPR-Cas13d ortholog discovery for optimized RNA targeting.}}{}
-          \resumeItemListStart
-            \resumeItem{Jingyi Wei, Peter Lotfy, \textbf{Kian Faizi}, Eleanor Wang, Hannah Slabodkin, Emily Kinnaman, Sita Chandrasekaran, Hugo Kitano, Matthew G. Durrant, Connor V. Duffy, Patrick D. Hsu, and Silvana Konermann. \emph{bioRxiv.} (2022) \doi{10.1101/2021.09.14.460134}}
-          \resumeItemListEnd
-    \resumeSubHeadingListEnd
 
 %-----------TEACHING EXPERIENCE-----------
 \section{Teaching}
-  \resumeSubHeadingListStart
-    \resumeProjectHeading
-      {\textbf{Principles of Biology} $|$ \emph{Caltech}}{Apr.\ 2022 -- June\ 2022}
-    \resumeProjectHeading
-      {\textbf{Genetic Inquiry} $|$ \emph{UCSD}}{Aug.\ 2020 -- Dec.\ 2020}
-  \resumeSubHeadingListEnd
+
+\resumeSubHeadingListStart
+
+\entry
+{Evolution}
+{Teaching Assistant $|$ \textit{Caltech}}
+{2024}
+
+\entry
+{Current Research in Biology and Biological Engineering}
+{Teaching Assistant $|$ \textit{Caltech}}
+{2023, 2024}
+
+\entry
+{The Great Ideas of Biology}
+{Head Teaching Assistant $|$ \textit{Caltech}}
+{2023, 2024}
+
+\entry
+{Principles of Biology}
+{Teaching Assistant $|$ \textit{Caltech}}
+{2022}
+
+\entry
+{Genetic Inquiry}
+{Instructional Assistant $|$ \textit{UCSD}}
+{2020}
+
+\resumeSubHeadingListEnd
+
+
+%-----------MENTORSHIP EXPERIENCE-----------
+\section{Mentorship, Leadership, and Service}
+
+
+\resumeSubHeadingListStart
+
+\entry
+{Technical advisor}
+{for various climate-focused funding programs:}
+{}
+\resumeItemListStart
+  \resumeItem{\href{https://homeworld.bio/grants/}{Homeworld Collective Garden Grants}; reviewed proposals at the intersection of protein engineering and sustainability (Nov.\ '23, \$1M awarded)}
+  \resumeItem{\href{https://www.fiftyyears.com/manifestclimate}{50Y Manifest Climate Grants}; evaluated ``fast grants'' for high-risk, high-reward climate biotech projects (Sep.\ '23, \$1M awarded)}
+  \resumeItem{\href{https://rocketfund.caltech.edu/}{Caltech Rocket Fund}; prepared and presented due diligence reports on cleantech startups competing for non-dilutive funding (Apr.\ '23, $\sim$\$800K awarded)}
+\resumeItemListEnd
+
+
+\entry
+{Caltech intern stuff (summer, winter)}
+{}
+{Jan.\ 2023}
+\resumeItemListStart
+  \resumeItem{}
+\resumeItemListEnd
+
+\entry
+{Caltech Biology Recruitment}
+{Organizer}
+{Jan.\ 2023}
+\resumeItemListStart
+  \resumeItem{}
+\resumeItemListEnd
+
+
+\entry
+{PUSD Innovation Expo}
+{Judge}
+{2023, 2024}
+\resumeItemListStart
+  \resumeItem{}
+\resumeItemListEnd
+
+\entry
+{Caltech Rocket Fund Newsletter}
+{Editorial Team}
+{Feb.\ 2023, Feb.\ 2024}
+\resumeItemListStart
+  \resumeItem{}
+\resumeItemListEnd
+
+
+\entry
+{Caltech Teaching Conference}
+{Facilitator}
+{Sep.\ 2022}
+\resumeItemListStart
+  \resumeItem{Co-led a workshop on effective pedagogy at Caltech's annual conference for new teaching assistants}
+\resumeItemListEnd
+
+\entry
+{Caltech Accountability Partners Program}
+{Mentor}
+{Aug.\ 2022 -- Feb.\ 2023}
+\resumeItemListStart
+  \resumeItem{Mentored a young scientist of color during the graduate school application process}
+  \resumeItem{Volunteered at FUTURE Ignited, a conference advancing diversity in STEM}
+\resumeItemListEnd
+
+\entry
+{Caltech Mycology Club}
+{Member}
+{Dec.\ 2021 -- present}
+\resumeItemListStart
+  \resumeItem{Established Caltech's first indoor co-operative mushroom farm with a team of undergraduates curious about ecology}
+  \resumeItem{Advertised mycology-related events and seminars in the greater LA community}
+\resumeItemListEnd
+
+\entry
+{UCSD Tritons Connect}
+{Mentor}
+{May\ 2021 -- present}
+\resumeItemListStart
+  \resumeItem{Provided \emph{pro bono} mentorship to undergraduates and alumni seeking research opportunities and careers in bioscience}
+\resumeItemListEnd
+
+
+\entry
+{UCSD Undergraduate Bioinformatics Club}
+{Member}
+{Nov.\ 2017 -- June\ 2021}
+  \resumeItemListStart
+    \resumeItem{Collaborated with Illumina to develop digital resources for high school students interested in bioinformatics}
+    \resumeItem{Helped organize the 2018 Faculty \& Industry Bioinformatics Symposium}
+    \resumeItem{Volunteered at the SD Science \& Engineering Festival to teach the community about DNA sequencing technology}
+  \resumeItemListEnd
+
+  
+\resumeSubHeadingListEnd
+
+%----------PUBLICATIONS-------
+\section{Publications}
+
+\begin{itemize}[leftmargin=0.15in, label={}]
+  
+  \pub{\textbf{[8]} \textbf{Faizi K}, McCarty N, and Targ S.}
+  {Free-living chloroplasts: a preliminary investigation.}
+  {New Science}
+  {2024}
+  {\href{https://research.newscience.org/2024/free-living-chloroplast/free-living-chloroplast}{newscience.org}}
+  
+  \pub{\textbf{[7]} Pan RW, Röschinger T, \textbf{Faizi K}, and Phillips R.}
+  {Dissecting endogenous genetic circuits from first principles.}
+  {arXiv}
+  {2024}
+  {\href{https://doi.org/10.48550/arXiv.2401.15880}{10.48550/arXiv.2401.15880}}
+
+  \pub{\textbf{[6]} Wei J, Lotfy P, \textbf{Faizi K}, Baungaard S, Gibson E, Wang E, Slabodkin H, Kinnaman E, Chandrasekaran S, Kitano H, Durrant MG, Duffy CV, Pawluk A, Hsu PD, and Konermann S.}
+  {Deep learning and CRISPR-Cas13d ortholog discovery for optimized RNA targeting.}
+  {Cell Systems}
+  {2023}
+  {\href{https://doi.org/10.1016/j.cels.2023.11.006}{10.1016/j.cels.2023.11.006}}
+
+  \pub{\textbf{[5]} Platre MP, Mehta P, Halvorson Z, Zhang L, Brent L, Matias GF, \textbf{Faizi K}, Goulding C, and Busch W.}
+  {Root Walker: an automated pipeline for large scale quantification of early root growth responses at high spatial and temporal resolution.}
+  {The Plant Journal}
+  {2023}
+  {\href{https://doi.org/10.1111/tpj.16493}{10.1111/tpj.16493}}
+
+  \pub{\textbf{[4]} \textbf{Faizi K}.}
+  {In Defense of Basic Science.}
+  {Caltech Letters}
+  {2022}
+  {\href{https://caltechletters.org/viewpoints/in-defense-of-basic-science}{caltechletters.org}}
+
+  \pub{\textbf{[3]} \textbf{Faizi K}.}
+  {Reversing 1.5 Billion Years of Evolution.}
+  {New Science}
+  {2022}
+  {\href{https://doi.org/10.56416/720qud}{10.56416/720qud}}
+
+  \pub{\textbf{[2]} \textbf{Faizi K}, Platre MP, Chandrasekhar A, Navlakha S, and Busch W.}
+  {Network design principles in the \emph{Arabidopsis} root system.}
+  {}
+  {in prep}
+  {}
+
+  \pub{\textbf{[1]} Ziamtsov I, \textbf{Faizi K}, and Navlakha S.}
+  {Branch-Pipe: Improving graph skeletonization around branch points in 3D point clouds.}
+  {Remote Sensing.}
+  {2021}
+  {\href{https://doi.org/10.3390/rs13193802}{10.3390/rs13193802}}
+  
+\end{itemize}
+
+
+
+
+%-----------HONORS AND AWARDS-----------
+\section{Honors and Awards}
+    \resumeSubHeadingListStart
+      \resumeEntry
+          {\textbf{New Science Summer Fellowship} (\$33,000) $|$ \emph{New Science Inc.}}{Mar.\ 2022}
+          \resumeItemListStart
+            \resumeItem{Inaugural cohort of 5 international researchers. Project: \emph{Engineering a free-living\\ chloroplast}, proposed independently}
+          \resumeItemListEnd
+      \resumeEntry
+          {\textbf{Halıcıoğlu Data Science Institute Scholarship Project Award} $|$ \emph{UCSD}}{May\ 2021}
+          \resumeItemListStart
+            \resumeItem{Recognizes a graduating student for their impact on UCSD's data science community}
+          \resumeItemListEnd
+      \resumeEntry
+          {\textbf{DOE CSGF Honorable Mention} $|$ \emph{Krell Institute}}{Apr.\ 2021}
+      \resumeEntry
+          {\textbf{Halıcıoğlu Data Science Institute Scholarship} (\$2,500) $|$ \emph{UCSD}}{Dec.\ 2019}
+          \resumeItemListStart
+            \resumeItem{Project: \emph{Single-cell transcriptomics and web mining for rapid reverse genetics in plants},\\ proposed under Dr.\ Wolfgang Busch}
+          \resumeItemListEnd
+       \resumeEntry
+          {\textbf{Eureka!\ Scholarship} (\$5,000) $|$ \emph{UCSD}}{June\ 2019}
+          \resumeItemListStart
+            \resumeItem{Project: \emph{Discovery and development of Type VI-D CRISPR effectors for transcriptome\\ engineering applications}, proposed under Dr.\ Patrick Hsu}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+
+
+
+
 
 %----------POSTERS & PRESENTATIONS-------
 \section{Posters and Presentations}
     \resumeSubHeadingListStart
-      \resumeProjectHeading
+      \resumeEntry
           {\textbf{Phosphorus dynamics, from genomes to ecosystems} $|$ \emph{Talk}}{Oct.\ 2022}
           \resumeItemListStart
             \resumeItem{Phillips Lab retreat (Biarritz, France)}
           \resumeItemListEnd
-      \resumeProjectHeading
+      \resumeEntry
           {\textbf{Towards a free-living chloroplast} $|$ \emph{Talk}}{Sep.\ 2022}
           \resumeItemListStart
             \resumeItem{New Science Demo Day (Cambridge, MA)}
           \resumeItemListEnd
-      \resumeProjectHeading
+      \resumeEntry
           {\textbf{Co-expression analysis of single-cell RNA-seq data} $|$ \emph{Talk}}{Oct.\ 2020}
           \resumeItemListStart
             \resumeItem{HDSI Research Conference (San Diego, CA)}
           \resumeItemListEnd
-      \resumeProjectHeading
+      \resumeEntry
           {\textbf{Mining Genomes for RNA-Targeting CRISPR Effectors} $|$ \emph{Talk}}{Aug.\ 2019}
           \resumeItemListStart
             \resumeItem{UCSD Summer Research Conference (San Diego, CA)}
           \resumeItemListEnd
-      \resumeProjectHeading
+      \resumeEntry
           {\textbf{Metagenomic Discovery of Type VI-D CRISPR Effectors} $|$ \emph{Poster}}{June\ 2019}
           \resumeItemListStart
             \resumeItem{UCSD Biology Student Research Showcase (San Diego, CA)}
           \resumeItemListEnd
     \resumeSubHeadingListEnd
 
-%-----------HONORS AND AWARDS-----------
-\section{Honors and Awards}
-    \resumeSubHeadingListStart
-      \resumeProjectHeading
-          {\textbf{New Science Summer Fellowship} (\$33,000) $|$ \emph{New Science Inc.}}{Mar.\ 2022}
-          \resumeItemListStart
-            \resumeItem{Inaugural cohort of 5 international researchers. Project: \emph{Engineering a free-living\\ chloroplast}, proposed independently}
-          \resumeItemListEnd
-      \resumeProjectHeading
-          {\textbf{Halıcıoğlu Data Science Institute Scholarship Project Award} $|$ \emph{UCSD}}{May\ 2021}
-          \resumeItemListStart
-            \resumeItem{Recognizes a graduating student for their impact on UCSD's data science community}
-          \resumeItemListEnd
-      \resumeProjectHeading
-          {\textbf{DOE CSGF Honorable Mention} $|$ \emph{Krell Institute}}{Apr.\ 2021}
-      \resumeProjectHeading
-          {\textbf{Halıcıoğlu Data Science Institute Scholarship} (\$2,500) $|$ \emph{UCSD}}{Dec.\ 2019}
-          \resumeItemListStart
-            \resumeItem{Project: \emph{Single-cell transcriptomics and web mining for rapid reverse genetics in plants},\\ proposed under Dr.\ Wolfgang Busch}
-          \resumeItemListEnd
-       \resumeProjectHeading
-          {\textbf{Eureka! Scholarship} (\$5,000) $|$ \emph{UCSD}}{June\ 2019}
-          \resumeItemListStart
-            \resumeItem{Project: \emph{Discovery and development of Type VI-D CRISPR effectors for transcriptome\\ engineering applications}, proposed under Dr.\ Patrick Hsu}
-          \resumeItemListEnd
-       \resumeProjectHeading
-          {\textbf{Provost Honors} $|$ \emph{UCSD}}{quarterly}
-    \resumeSubHeadingListEnd
-
+  
+  
 %-----------ACTIVITIES-----------
 \section{Service and Leadership}
-  \resumeSubHeadingListStart
 
-    \resumeProjectHeading
-      {\textbf{2022 Teaching Conference} facilitator $|$ \emph{Caltech}}{Sep.\ 2022}
-      {}{}
-      \resumeItemListStart
-        \resumeItem{Co-led a workshop on effective pedagogy at Caltech's annual conference for new\\ teaching assistants}
-      \resumeItemListEnd
-
-    \resumeProjectHeading
-      {\textbf{Caltech Accountability Parters Program} mentor $|$ \emph{Caltech}}{Aug.\ 2022 -- present}
-      {}{}
-      \resumeItemListStart
-        \resumeItem{Mentored a young scientist of color during the graduate school application process}
-        \resumeItem{Volunteered at FUTURE Ignited, a conference advancing diversity in STEM}
-      \resumeItemListEnd
-
-    \resumeProjectHeading
-      {\textbf{CaltechASM} co-founder $|$ \emph{Caltech}}{May\ 2022 -- present}
-      {}{}
-      \resumeItemListStart
-        \resumeItem{Co-founded the campus chapter of the American Society for Microbiology}
-        \resumeItem{Planned talks, socials, and an upcoming research exchange targeting first-generation\\ students from Cal State LA}
-      \resumeItemListEnd
-
-    \resumeProjectHeading
-      {\textbf{Mycology Club} member $|$ \emph{Caltech}}{Dec.\ 2021 -- present}
-      {}{}
-      \resumeItemListStart
-        \resumeItem{Established Caltech's first indoor co-operative mushroom farm with a team of\\ undergraduates curious about ecology}
-        \resumeItem{Advertised mycology-related events and seminars in the greater LA community}
-      \resumeItemListEnd
-
-    \resumeProjectHeading
-      {\textbf{Tritons Connect} mentor $|$ \emph{UCSD}}{May\ 2021 -- present}
-      {}{}
-      \resumeItemListStart
-        \resumeItem{Provided \emph{pro bono} mentorship to undergraduates and alumni seeking research\\ opportunities and careers in bioscience}
-      \resumeItemListEnd
-
-    \resumeProjectHeading
-      {\textbf{Undergraduate Bioinformatics Club} member $|$ \emph{UCSD}}{Nov.\ 2017 -- June\ 2021}
-      {}{}
-      \resumeItemListStart
-        \resumeItem{Collaborated with Illumina to develop digital resources for high school students\\ interested in bioinformatics}
-        \resumeItem{Helped organize the 2018 Faculty \& Industry Bioinformatics Symposium}
-        \resumeItem{Volunteered at the SD Science \& Engineering Festival to teach the community\\ about DNA sequencing technology}
-      \resumeItemListEnd
-  \resumeSubHeadingListEnd
 
 
 %-----------SKILLS-----------
 \section{Skills}
-  \begin{itemize}[leftmargin=0.15in, label={}]
-     \small{\item{
-      \textbf{Laboratory}{: Cell/tissue culture, cloning, molecular biology, CRISPR, optical microscopy} \\
-      \textbf{Computational}{: Python, bash, Arch Linux, web design, dashboarding, GUI development} \\
-      \textbf{Organizational}{: Git, \LaTeX} \\}
-  \end{itemize}
+
+\resumeSubHeadingListStart
+    \small{\item{
+    \textbf{Laboratory}{: cell/tissue culture, cloning, molecular biology, CRISPR, optical microscopy} \\
+    \textbf{Computational}{: Python, Linux system administration, HTML/CSS} \\
+    \textbf{Organizational}{: Git, \LaTeX} \\}}
+\resumeSubHeadingListEnd
 
 
 %-------------------------------------------
 \end{document}
+
+% bio recruitment
+% future ignited
+% innovation expo
+% GO-outdoors
+% summer students
