@@ -14,7 +14,8 @@
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{verbatim}
 \usepackage{enumitem}
-\usepackage[hidelinks,colorlinks,linkcolor=blue,urlcolor=blue,citecolor=blue,anchorcolor=blue]{hyperref}
+\usepackage{etaremune}
+\usepackage[hidelinks,colorlinks,linkcolor=RoyalBlue,urlcolor=RoyalBlue,citecolor=RoyalBlue,anchorcolor=RoyalBlue]{hyperref}
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
@@ -28,14 +29,14 @@
 
 %----------FONT OPTIONS----------
 % \usepackage{palatino}
-\usepackage{lmodern}
-% \renewcommand{\rmdefault}{lmss}
+% \usepackage{lmodern}
+\renewcommand{\rmdefault}{lmss}
 
 \pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
 \renewcommand{\headrulewidth}{0pt} % Removes the header rule
 \renewcommand{\footrulewidth}{0pt}
-\fancyfoot[L]{\footnotesize{as of Feb.\ 2024}}
+\fancyfoot[L]{\footnotesize{as of May 2024}}
 \fancyfoot[R]{\footnotesize{\thepage/\pageref{LastPage}}}
 
 
@@ -48,7 +49,7 @@
 
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-4pt}\fontfamily{lmss}\raggedright\large
+  \fontfamily{lmss}\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
 % Ensure that generate pdf is machine readable/ATS parsable
@@ -93,15 +94,16 @@
       {\small \textbf{#1} #2}  % class/org, role, institution
       & {\footnotesize{#3}} \\  % dates held
     \end{tabular*}
-    \vspace{-7pt}
+    \vspace{-4pt}
 }
 
 % publications
 \newcommand{\pub}[5]{
   \item
-  \begin{tabular*}{0.97\textwidth}[t]{@{}p{0.97\textwidth}@{}}
+  % \begin{tabular*}{0.97\textwidth}[t]{@{}p{0.97\textwidth}@{}}
+  \begin{tabular*}{0.9\textwidth}[t]{@{}p{0.94\textwidth}@{}}
     \small#1 % authors
-    \small#2 % title
+    \small``#2'' % title
     \small\textbf{\emph{#3}} % journal
     \small(#4). % year
     \small#5 % doi/link
@@ -218,7 +220,7 @@
 {La Jolla, CA}
 
 \role
-{BS in Molecular Biology, Minor in Mathematics (GPA: 3.75)}
+{BS in Molecular Biology, Minor in Mathematics}
 {Aug.\ 2017 -- June\ 2021}
 
       % \resumeItemListStart
@@ -232,7 +234,7 @@
 
 
 %-----------RESEARCH EXPERIENCE-----------
-\section{Research}
+\section{Experience}
 
 \resumeSubHeadingListStart
 
@@ -243,11 +245,8 @@
 \role
 {PhD Student, Dr.\ Rob Phillips}
 {Sep.\ 2021 -- present}
-\resumeItemListStart
-  \resumeItem{Studying transcriptional regulation and nutrient ecology in \textit{E.\ coli} \textbf{[7]}}
-  \resumeItem{Expanding \href{https://www.anthroponumbers.org/}{anthroponumbers.org}, a database quantifying human impacts on the planet}
-\resumeItemListEnd
- 
+\vspace{6pt}
+
 \place
 {Harvard Medical School}
 {Boston, MA}
@@ -255,10 +254,8 @@
 \role
 {Visiting Postgraduate Fellow, Dr.\ Pam Silver}
 {June\ 2022 -- Aug.\ 2022}
-\resumeItemListStart
-  \resumeItem{Developed tools for chloroplast engineering in microalgae \textbf{[3,8]}}
-  \resumeItem{On sabbatical from Caltech as an inaugural \emph{New Science} fellow}
-\resumeItemListEnd
+\vspace{6pt}
+
 
 \place
 {Salk Institute for Biological Studies}
@@ -267,24 +264,120 @@
 \role
 {Lab Technician, Dr.\ Wolfgang Busch}
 {Nov.\ 2019 -- Sep.\ 2021}
-\resumeItemListStart
-  \resumeItem{Investigated Pareto-optimal trade-offs in the \emph{Arabidopsis} root system using high-throughput phenotyping and graph-theoretic modeling \textbf{[2]}}
-  \resumeItem{Built software for time-series segmentation and analysis of root images}
-  \resumeItem{Helped develop algorithms for plant phenotyping from LIDAR point clouds \textbf{[1]}}
-  \resumeItem{Quantified root responses to nutrient stress using time-lapse microscopy \textbf{[5]}}
-  % \resumeItem{Created a pipeline for co-expression network analysis of scRNA-seq data to identify genetic targets for crop engineering}
-\resumeItemListEnd
+\vspace{6pt}
+
 
 \role
 {Volunteer Research Assistant, Dr.\ Patrick Hsu}
 {Nov.\ 2018 -- Nov.\ 2019}
-\resumeItemListStart
-  \resumeItem{Developed an automated pipeline to mine over 20 TB of metagenomic sequence data for new orthologs of CRISPR-Cas13d}
-  \resumeItem{Assisted with a pooled CRISPR screen to optimize guide RNA design \textbf{[6]}}
-\resumeItemListEnd
-\vspace{-10pt}
+\vspace{6pt}
+
 
 \resumeSubHeadingListEnd
+
+
+
+%----------PUBLICATIONS-------
+\section{Publications}
+
+\begin{etaremune}
+  
+  \pub{\textbf{Kian Faizi}, Niko McCarty, and Sasha Targ.}
+  {Free-living chloroplasts: a preliminary investigation.}
+  {New Science}
+  {2024}
+  {\href{https://research.newscience.org/2024/free-living-chloroplast/free-living-chloroplast}{newscience.org}}
+  
+  \pub{Rosalind Wenshan Pan, Tom Röschinger, \textbf{Kian Faizi}, and Rob Phillips.}
+  {Dissecting endogenous genetic circuits from first principles.}
+  {arXiv}
+  {2024}
+  {\href{https://doi.org/10.48550/arXiv.2401.15880}{10.48550/arXiv.2401.15880}}
+
+  \pub{Jingyi Wei, Peter Lotfy, \textbf{Kian Faizi}, Sara Baungaard, Emily Gibson, Eleanor Wang, Hannah Slabodkin, Emily Kinnaman, Sita Chandrasekaran, Hugo Kitano, Matthew G. Durrant, Connor V. Duffy, April Pawluk, Patrick D. Hsu, and Silvana Konermann.}
+  {Deep learning and CRISPR-Cas13d ortholog discovery for optimized RNA targeting.}
+  {Cell Systems}
+  {2023}
+  {\href{https://doi.org/10.1016/j.cels.2023.11.006}{10.1016/j.cels.2023.11.006}}
+
+  \pub{Matthieu Pierre Platre, Preyanka Mehta, Zachary Halvorson, Ling Zhang, Lukas Brent, Matias Gleason F., \textbf{Kian Faizi}, Callum Goulding, and Wolfgang Busch.}
+  {Root Walker: an automated pipeline for large scale quantification of early root growth responses at high spatial and temporal resolution.}
+  {The Plant Journal}
+  {2023}
+  {\href{https://doi.org/10.1111/tpj.16493}{10.1111/tpj.16493}}
+
+  \pub{\textbf{Kian Faizi}.}
+  {In Defense of Basic Science.}
+  {Caltech Letters}
+  {2022}
+  {\href{https://caltechletters.org/viewpoints/in-defense-of-basic-science}{caltechletters.org}}
+
+  \pub{\textbf{Kian Faizi}.}
+  {Reversing 1.5 Billion Years of Evolution.}
+  {New Science}
+  {2022}
+  {\href{https://doi.org/10.56416/720qud}{10.56416/720qud}}
+
+  \pub{Illia Ziamtsov, \textbf{Kian Faizi}, and Saket Navlakha.}
+  {Branch-Pipe: Improving graph skeletonization around branch points in 3D point clouds.}
+  {Remote Sensing.}
+  {2021}
+  {\href{https://doi.org/10.3390/rs13193802}{10.3390/rs13193802}}
+  
+\end{etaremune}
+
+
+%-----------HONORS AND AWARDS-----------
+\section{Honors and Awards}
+
+\resumeSubHeadingListStart
+
+\entry
+{Center for Evolutionary Science}
+{project grant (\$10k) $|$ Caltech}
+{Feb.\ 2024}
+
+\entry
+{New Science}
+{summer fellowship (\$33k) $|$ New Science Research, Inc.}
+{Mar.\ 2022}
+% \resumeItemListStart
+%   \resumeItem{Inaugural cohort of 5 international researchers. Project: \emph{Engineering a free-living\\ chloroplast}, proposed independently}
+% \resumeItemListEnd
+
+\entry
+{Halıcıoğlu Data Science Institute}
+{scholarship project award $|$ UCSD}
+{May\ 2021}
+% \resumeItemListStart
+%   \resumeItem{Recognizes a graduating student for their impact on UCSD's data science community}
+% \resumeItemListEnd
+
+% \entry
+% {\textbf{DOE CSGF} honorable mention}
+% {$|$ Krell Institute}
+% {Apr.\ 2021}
+
+\entry
+{Halıcıoğlu Data Science Institute}
+{scholarship (\$2.5k) $|$ UCSD}
+{Dec.\ 2019}
+% \resumeItemListStart
+%   \resumeItem{Project: \emph{Single-cell transcriptomics and web mining for rapid reverse genetics in plants},\\ proposed under Dr.\ Wolfgang Busch}
+% \resumeItemListEnd
+
+\entry
+{Eureka!}
+{scholarship (\$5k) $|$ UCSD}
+{June\ 2019}
+% \resumeItemListStart
+%   \resumeItem{Project: \emph{Discovery and development of Type VI-D CRISPR effectors for transcriptome\\ engineering applications}, proposed under Dr.\ Patrick Hsu}
+% \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+
+
 
 %-----------TEACHING EXPERIENCE-----------
 \section{Teaching}
@@ -292,33 +385,38 @@
 \resumeSubHeadingListStart
 
 \entry
-{Evolution}
-{Teaching Assistant $|$ Caltech}
+{Galápagos Expedition and DNA Bootcamp}
+{teaching assistant $|$ Caltech}
 {2024}
 
 \entry
-{Physical Biology Bootcamp}
-{Teaching Assistant $|$ Caltech}
+{Evolution}
+{teaching assistant $|$ Caltech}
 {2024}
 
 \entry
 {Current Research in Biology and Biological Engineering}
-{Teaching Assistant $|$ Caltech}
+{teaching assistant $|$ Caltech}
+{2023, 2024}
+
+\entry
+{Physical Biology Bootcamp}
+{teaching assistant $|$ Caltech}
 {2023, 2024}
 
 \entry
 {The Great Ideas of Biology}
-{Head Teaching Assistant $|$ Caltech}
+{head teaching assistant \href{https://bi1.caltech.edu/2024/}{(course site)} $|$ Caltech}
 {2023, 2024}
 
 \entry
 {Principles of Biology}
-{Teaching Assistant $|$ Caltech}
+{teaching assistant $|$ Caltech}
 {2022}
 
 \entry
 {Genetic Inquiry}
-{Instructional Assistant $|$ UCSD}
+{instructional assistant $|$ UCSD}
 {2020}
 
 \resumeSubHeadingListEnd
@@ -331,195 +429,72 @@
 \resumeSubHeadingListStart
 
 \entry
+{Caltech GO-Outdoors}
+{leading field-based education for local K-12 classrooms \href{https://go-outdoors.caltech.edu/}{(site)}}
+{2024 -- present}
+
+\entry
 {Technical advisor}
 {for various climate-focused funding programs:}
 {2023 -- present}
 \resumeItemListStart
-  \resumeItem{\href{https://homeworld.bio/grants/}{Homeworld Collective Garden Grants}; reviewed proposals on protein engineering for sustainability (\$1M awarded)}
-  \resumeItem{\href{https://www.fiftyyears.com/manifestclimate}{50Y Manifest Climate Grants}; evaluated ``fast grants'' for high-risk, high-reward climate biotech projects (\$1M awarded)}
-  \resumeItem{\href{https://rocketfund.caltech.edu/}{Caltech Rocket Fund}; prepared and presented due diligence reports on cleantech startups competing for non-dilutive funding ($\sim$\$800K awarded)}
+  \resumeItem{Homeworld Collective Garden Grants: reviewed proposals on protein engineering for sustainability (\$1m awarded) \href{https://homeworld.bio/grants/}{(site)}}
+  \resumeItem{50Y Manifest Climate Grants: evaluated ``fast grants'' for high-risk, high-reward climate biotech projects (\$1m awarded) \href{https://www.fiftyyears.com/manifestclimate}{(site)}}
+  \resumeItem{Caltech Rocket Fund: prepared and presented due diligence reports on cleantech startups competing for non-dilutive funding ($\sim$\$800k awarded) \href{https://rocketfund.caltech.edu/}{(site)}}
 \resumeItemListEnd
-
+\vspace{-5pt}
 
 \entry
 {Research mentor}
-{for visiting students:}
+{for visiting high school students:}
 {2023 -- present}
 \resumeItemListStart
   \resumeItem{G.\ Milo: modeling freshwater eutrophication and algal blooms}
   \resumeItem{S.\ Bhattacharya, A.\ Bhate: mapping human impacts on global phosphorus cycling}
 \resumeItemListEnd
+\vspace{-5pt}
 
 \entry
 {Caltech Rocket Fund}
-{}
+{editorial staff for monthly cleantech newsletter}
 {2023 -- present}
-\resumeItemListStart
-  \resumeItem{On editorial staff for a monthly newsletter on climate entrepreneurship}
-\resumeItemListEnd
 
 \entry
-{Innovation Expo}
-{}
+{Pasadena Unified Innovation Expo}
+{volunteer judge for K-8 science fair \href{https://www.pusd.us/departments/stem/innovation-exposition}{(site)}}
 {2023, 2024}
-\resumeItemListStart
-  \resumeItem{Volunteer judge for Pasadena Unified School District's annual K-8 science fair}
-\resumeItemListEnd
 
 \entry
-{Caltech Biology Recruitment}
-{}
+{Caltech Biology}
+{lead organizer for recruitment weekend}
 {Jan.\ 2023}
-\resumeItemListStart
-  \resumeItem{Co-organized recruitment weekend events for prospective PhD students}
-\resumeItemListEnd
 
 \entry
-{Caltech Teaching Conference}
-{}
+{Caltech Annual Teaching Conference}
+{workshop facilitator for new TAs \href{https://ctlo.caltech.edu/universityteaching/events/conference}{(site)}}
 {Sep.\ 2022}
-\resumeItemListStart
-  \resumeItem{Facilitated a workshop on effective pedagogy for new teaching assistants}
-\resumeItemListEnd
 
 \entry
 {Caltech Accountability Partners Program}
-{}
-{Aug.\ 2022 -- Feb.\ 2023}
-\resumeItemListStart
-  \resumeItem{Matched with undergraduates to support them during the graduate school application process via \href{https://sfp.caltech.edu/diversity-programs/future-ignited}{FUTURE Ignited}, a program advancing diversity in STEM}
-\resumeItemListEnd
+{peer mentor for prospective students \href{https://sfp.caltech.edu/diversity-programs/future-ignited/capp}{(site)}}
+{Aug.\ 2022}
 
 \entry
 {Caltech Mycology Club}
-{}
+{member; helped establish indoor co-op mushroom farm}
 {Dec.\ 2021 -- present}
-\resumeItemListStart
-  \resumeItem{Worked with undergraduates to establish Caltech's first indoor co-op mushroom farm}
-  % \resumeItem{Advertised mycological events and seminars in the greater LA community}
-\resumeItemListEnd
 
 \entry
 {UCSD Tritons Connect}
-{}
-{May\ 2021 -- present}
-\resumeItemListStart
-  \resumeItem{Provided \emph{pro bono} mentorship to undergraduates and alumni interested in bioscience}
-\resumeItemListEnd
+{peer mentor for alumni}
+{May\ 2021 -- May\ 2022}
 
 \entry
 {UCSD Undergraduate Bioinformatics Club}
-{}
+{member}
 {Nov.\ 2017 -- June\ 2021}
-  \resumeItemListStart
-    % \resumeItem{Partnered with Illumina to develop resources for high school students interested in bioinformatics}
-    \resumeItem{Helped organize the Southwestern Bioinformatics Conference (formerly the Faculty-Industry Bioinformatics Symposium)}
-    \resumeItem{Manned our booth at the San Diego Science and Engineering Festival to teach the community about DNA sequencing}
-  \resumeItemListEnd
-
   
 \resumeSubHeadingListEnd
-
-%----------PUBLICATIONS-------
-\section{Publications}
-
-\begin{itemize}[leftmargin=0.15in, label={}]
-  
-  \pub{\textbf{[8]} \textbf{Faizi K}, McCarty N, and Targ S.}
-  {Free-living chloroplasts: a preliminary investigation.}
-  {New Science}
-  {2024}
-  {\href{https://research.newscience.org/2024/free-living-chloroplast/free-living-chloroplast}{newscience.org}}
-  
-  \pub{\textbf{[7]} Pan RW, Röschinger T, \textbf{Faizi K}, and Phillips R.}
-  {Dissecting endogenous genetic circuits from first principles.}
-  {arXiv}
-  {2024}
-  {\href{https://doi.org/10.48550/arXiv.2401.15880}{10.48550/arXiv.2401.15880}}
-
-  \pub{\textbf{[6]} Wei J, Lotfy P, \textbf{Faizi K}, Baungaard S, Gibson E, Wang E, Slabodkin H, Kinnaman E, Chandrasekaran S, Kitano H, Durrant MG, Duffy CV, Pawluk A, Hsu PD, and Konermann S.}
-  {Deep learning and CRISPR-Cas13d ortholog discovery for optimized RNA targeting.}
-  {Cell Systems}
-  {2023}
-  {\href{https://doi.org/10.1016/j.cels.2023.11.006}{10.1016/j.cels.2023.11.006}}
-
-  \pub{\textbf{[5]} Platre MP, Mehta P, Halvorson Z, Zhang L, Brent L, Matias GF, \textbf{Faizi K}, Goulding C, and Busch W.}
-  {Root Walker: an automated pipeline for large scale quantification of early root growth responses at high spatial and temporal resolution.}
-  {The Plant Journal}
-  {2023}
-  {\href{https://doi.org/10.1111/tpj.16493}{10.1111/tpj.16493}}
-
-  \pub{\textbf{[4]} \textbf{Faizi K}.}
-  {In Defense of Basic Science.}
-  {Caltech Letters}
-  {2022}
-  {\href{https://caltechletters.org/viewpoints/in-defense-of-basic-science}{caltechletters.org}}
-
-  \pub{\textbf{[3]} \textbf{Faizi K}.}
-  {Reversing 1.5 Billion Years of Evolution.}
-  {New Science}
-  {2022}
-  {\href{https://doi.org/10.56416/720qud}{10.56416/720qud}}
-
-  \pub{\textbf{[2]} \textbf{Faizi K}, Platre MP, Chandrasekhar A, Navlakha S, and Busch W.}
-  {Network design principles in the \emph{Arabidopsis} root system.}
-  {}
-  {in prep}
-  {}
-
-  \pub{\textbf{[1]} Ziamtsov I, \textbf{Faizi K}, and Navlakha S.}
-  {Branch-Pipe: Improving graph skeletonization around branch points in 3D point clouds.}
-  {Remote Sensing.}
-  {2021}
-  {\href{https://doi.org/10.3390/rs13193802}{10.3390/rs13193802}}
-  
-\end{itemize}
-
-
-%-----------HONORS AND AWARDS-----------
-\section{Honors and Awards}
-
-\resumeSubHeadingListStart
-
-\entry
-{New Science Summer Fellowship}
-{(\$33,000) $|$ New Science Inc.}
-{Mar.\ 2022}
-% \resumeItemListStart
-%   \resumeItem{Inaugural cohort of 5 international researchers. Project: \emph{Engineering a free-living\\ chloroplast}, proposed independently}
-% \resumeItemListEnd
-
-\entry
-{Halıcıoğlu Data Science Institute Scholarship Project Award}
-{$|$ UCSD}
-{May\ 2021}
-% \resumeItemListStart
-%   \resumeItem{Recognizes a graduating student for their impact on UCSD's data science community}
-% \resumeItemListEnd
-
-\entry
-{DOE CSGF Honorable Mention}
-{$|$ Krell Institute}
-{Apr.\ 2021}
-
-\entry
-{Halıcıoğlu Data Science Institute Scholarship}
-{(\$2,500) $|$ UCSD}
-{Dec.\ 2019}
-% \resumeItemListStart
-%   \resumeItem{Project: \emph{Single-cell transcriptomics and web mining for rapid reverse genetics in plants},\\ proposed under Dr.\ Wolfgang Busch}
-% \resumeItemListEnd
-
-\entry
-{Eureka!\ Scholarship}
-{(\$5,000) $|$ UCSD}
-{June\ 2019}
-% \resumeItemListStart
-%   \resumeItem{Project: \emph{Discovery and development of Type VI-D CRISPR effectors for transcriptome\\ engineering applications}, proposed under Dr.\ Patrick Hsu}
-% \resumeItemListEnd
-
-\resumeSubHeadingListEnd
-
 
 
 %----------POSTERS & PRESENTATIONS-------
@@ -570,18 +545,5 @@
 % \resumeSubHeadingListEnd
 
 
-%-----------SKILLS-----------
-\section{Skills}
-
-\resumeSubHeadingListStart
-    \small{\item{
-    \textbf{Laboratory}{: microbiology, cell/tissue culture, cloning, molecular biology, CRISPR, optical microscopy} \\
-    \textbf{Computational}{: Python, Linux system administration, web development} \\
-    \textbf{Organizational}{: Git, \LaTeX} \\}}
-\resumeSubHeadingListEnd
-
-
 %-------------------------------------------
 \end{document}
-
-% GO-outdoors
